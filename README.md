@@ -1,0 +1,2 @@
+- Muita dificuldade em saber as dúvidas dos alunos
+- Tenho que responder os alunos e eu me perco em quais dúvidas já foram respondidas
