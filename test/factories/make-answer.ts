@@ -12,6 +12,7 @@ export function makeAnswer(
       authorId: new UniqueEntityID(),
       content: faker.lorem.text(),
       questionId: new UniqueEntityID(),
+      createdAt: override.createdAt ?? new Date(),
       ...override,
     },
     id,
