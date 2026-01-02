@@ -3,6 +3,7 @@ import { makeQuestionComment } from 'test/factories/make-question-comments'
 import { InMemoryAnswerCommentRepository } from 'test/repositories/in-memory-answer-comments-repository'
 import { DeleteCommentAnswerUseCase } from './delete-question-answer'
 import { makeAnswerComment } from 'test/factories/make-answer-comments'
+import { NotAllowError } from './errors/not-allow-error'
 
 let inMemoryAnswerCommentRepository: InMemoryAnswerCommentRepository
 let sut: DeleteCommentAnswerUseCase
@@ -41,11 +42,12 @@ describe('Delete Question Answer', () => {
 
     inMemoryAnswerCommentRepository.create(newAnswerComment)
 
-    expect(() => {
-      return sut.execute({
-        answerId: 'answer-1',
-        authorId: 'author-2',
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      answerId: 'answer-1',
+      authorId: 'author-2',
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(NotAllowError)
   })
 })

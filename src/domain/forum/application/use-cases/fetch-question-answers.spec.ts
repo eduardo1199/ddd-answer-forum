@@ -23,12 +23,12 @@ describe('Fetch Question Answers', () => {
       )
     }
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'question-1',
       page: 1,
     })
 
-    expect(answers).toHaveLength(AMOUNT_ANSWER)
+    expect(result.value?.answers).toHaveLength(AMOUNT_ANSWER)
   })
 
   it('should be able fetch paginations recent questions', async () => {
@@ -40,11 +40,11 @@ describe('Fetch Question Answers', () => {
       )
     }
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'question-1',
       page: 2,
     })
 
-    expect(answers).toHaveLength(2)
+    expect(result.value?.answers).toHaveLength(2)
   })
 })
