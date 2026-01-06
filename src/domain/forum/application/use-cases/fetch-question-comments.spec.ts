@@ -2,12 +2,17 @@ import { InMemoryQuestionCommentRepository } from 'test/repositories/in-memory-q
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { makeQuestionComment } from 'test/factories/make-question-comments'
 import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
+import { InMemoryQuestionAttachmentRepository } from 'test/repositories/in-memory-questions-attachments-repository'
 
 let inMemoryQuestionCommentRepository: InMemoryQuestionCommentRepository
+let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentRepository
+
 let sut: FetchQuestionCommentsUseCase
 
 describe('Fetch Question Comments List', () => {
   beforeEach(() => {
+    inMemoryQuestionAttachmentsRepository =
+      new InMemoryQuestionAttachmentRepository()
     inMemoryQuestionCommentRepository = new InMemoryQuestionCommentRepository()
     sut = new FetchQuestionCommentsUseCase(inMemoryQuestionCommentRepository)
   })

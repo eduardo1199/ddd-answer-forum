@@ -1,9 +1,12 @@
 import { PaginationParams } from '@/core/repositories/pagination-params'
+import { AnswerAttachmentRepository } from '@/domain/forum/application/repositories/answer-attachment-repository'
 import { AnswerRepository } from '@/domain/forum/application/repositories/answer-repository'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 export class InMemoryAnswerRepository implements AnswerRepository {
   public items: Answer[] = []
+
+  constructor(private answerAttachmentRepository: AnswerAttachmentRepository) {}
 
   async create(answer: Answer) {
     this.items.push(answer)
@@ -13,6 +16,7 @@ export class InMemoryAnswerRepository implements AnswerRepository {
     const filtered = this.items.filter((item) => item.id !== answer.id)
 
     this.items = filtered
+    this.answerAttachmentRepository.deleteManyByAnswerId(answer.id.toString())
   }
 
   async findById(id: string): Promise<Answer | null> {
