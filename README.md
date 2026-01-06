@@ -33,3 +33,27 @@ Então basicamente, é um array com qualquer conteúdo aonde é possível identi
 - Question -> Attachment[]
 
 Aqui preciso criar a pergunta anexando arquivos, então será duas criações de entidades simultâneas (Agregado)
+
+# Subdominios
+
+- Core: O que dá dinheiro
+- Supporting: Dá suporte para o core funcionar
+- Generic: Você precisa deles, mas não são tão importantes
+
+## Exemplos
+
+### Core
+- Compra
+- Catálogo
+- Pagamento
+- Entrega
+
+### Supporting
+
+- Estoque
+
+### Generic
+
+- Notificação ao cliente
+- Promoções
+- Chat

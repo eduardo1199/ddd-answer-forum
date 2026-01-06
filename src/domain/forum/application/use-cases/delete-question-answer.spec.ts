@@ -3,7 +3,7 @@ import { makeQuestionComment } from 'test/factories/make-question-comments'
 import { InMemoryAnswerCommentRepository } from 'test/repositories/in-memory-answer-comments-repository'
 import { DeleteCommentAnswerUseCase } from './delete-question-answer'
 import { makeAnswerComment } from 'test/factories/make-answer-comments'
-import { NotAllowError } from './errors/not-allow-error'
+import { NotAllowError } from '../../../../core/errors/not-allow-error'
 
 let inMemoryAnswerCommentRepository: InMemoryAnswerCommentRepository
 let sut: DeleteCommentAnswerUseCase
